@@ -44,5 +44,30 @@ namespace NUnitTestProject1
             //Assert
             Assert.AreEqual(expectedSummary, actualSummary);
         }
+        /// <summary>
+        /// UC 4 : Given the user id, invoice service gets list of rides and returns invoice summary.
+        /// </summary>
+        [Test]
+        public void GivenUserId_InvoiceServiceGetsListOfRides_ShouldReturnInvoiceSummary()
+        {
+            // Arrange
+            invoiceGenerator = new InvoiceGenerator();
+            string userId1 = "USER1";
+            string userId2 = "USER2";
+            Ride[] rides1 = { new Ride(4, 8), new Ride(6, 10), new Ride(10, 12), new Ride(1, 4) };
+            Ride[] rides2 = { new Ride(1,5 ), new Ride(4, 7), new Ride(5, 8) };
+            invoiceGenerator.AddRides(userId1, rides1);
+            invoiceGenerator.AddRides(userId2, rides2);
+            InvoiceSummary expectedSummary1 = new InvoiceSummary(4, 244, 61);
+            InvoiceSummary expectedSummary2 = new InvoiceSummary(3, 120, 40);
+
+            // Act
+            InvoiceSummary actualSummary1 = invoiceGenerator.GetInvoiceSummary(userId1);
+            InvoiceSummary actualSummary2 = invoiceGenerator.GetInvoiceSummary(userId2);
+
+            //Assert
+            Assert.AreEqual(expectedSummary1, actualSummary1);
+            Assert.AreEqual(expectedSummary2, actualSummary2);
+        }
     }
 }
