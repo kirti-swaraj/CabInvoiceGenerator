@@ -24,7 +24,8 @@ namespace CabInvoiceGenerator
             INVALID_DISTANCE,
             INVALID_TIME,
             NULL_RIDES,
-            INVALID_USERID
+            INVALID_USERID,
+            INVALID_RIDE_TYPE
         }
 
         public ExceptionType exceptionType;
